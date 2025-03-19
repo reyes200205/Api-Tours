@@ -48,14 +48,6 @@ export const registerUser = async (req: Request, res: Response) => {
         });
 
 
-        const sendMessage = await client.messages.create({
-            body: `Welcome to Tours, ${newUser.name}`,
-            from: process.env.TWILIO_PHONE_NUMBER,
-            to: newUser.phoneNumber
-        });
-
-
-
         return res.status(201).json({ message: "User created successfully", user: newUser });
     } catch (error) {
         console.error(error);
